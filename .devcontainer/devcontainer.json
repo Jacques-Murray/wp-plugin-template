@@ -1,0 +1,23 @@
+{
+    "name": "WP Plugin Template",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "wordpress",
+    "workspaceFolder": "/var/www/html/wp-content/plugins/local-dev-plugin",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "xdebug.php-debug",
+                "wordpresstoolbox.wordpress-toolbox",
+                "esbenp.prettier-vscode"
+            ],
+            "settings": {
+                "php.validate.executablePath": "/usr/local/bin/php",
+                "editor.formatOnSave": true
+            }
+        }
+    },
+    // Activates whatever is in the 'local-dev-plugin' folder
+    "postCreateCommand": "chown -R www-data:www-data /var/www/html/wp-content/plugins/local-dev-plugin && wp plugin activate local-dev-plugin --allow-root",
+    "remoteUser": "root"
+}
